@@ -22,6 +22,7 @@ const tsconfigPath = path.join(COMPONENTS_DIR, 'tsconfig.json');
 /** Asset files to be added to the components output. */
 const assetFiles = [
   path.join(COMPONENTS_DIR, '**/*.html'),
+  path.join(COMPONENTS_DIR, '**/*.scss'),
   path.join(COMPONENTS_DIR, 'package.json'),
   path.join(PROJECT_ROOT, 'README.md'),
   path.join(PROJECT_ROOT, 'LICENSE'),
@@ -39,7 +40,7 @@ task(':build:components:release', sequenceTask(
 
 /** Builds components typescript in ES5, ES6 target. For specs Karma needs CJS output. */
 task(':build:components:ts:es5', tsBuildTask(tsconfigPath, { target: ScriptTarget.ES5 }));
-task(':build:components:ts:es6', tsBuildTask(tsconfigPath, { target: ScriptTarget.ES6 }));
+task(':build:components:ts:es6', tsBuildTask(tsconfigPath, { target: ScriptTarget.ES2015 }));
 task(':build:components:ts:spec', tsBuildTask(tsconfigPath, {
   target: ScriptTarget.ES5, module: ModuleKind.CommonJS
 }));
